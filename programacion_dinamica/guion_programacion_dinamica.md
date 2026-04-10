@@ -639,6 +639,58 @@ $$\text{respuesta} = \text{mgn}(0, n)$$
 
 $n^2 \ll 3^n$ para cualquier $n$ razonable. Superposición confirmada.
 
+**Implementación del algoritmo top down**
+
+```python
+from math import inf
+
+p:list[int]
+cant_dias:int
+matriz:list[list[int]] = []
+
+def tomar_entrada():
+    global cant_dias, p, matriz
+
+    cant_dias = int(input())
+    p = list(map(int, input().split(" ")))
+    
+    for _ in range(cant_dias):
+        fila = []
+        for _ in range(cant_dias):
+            fila.append(-inf)
+        matriz.append(fila)
+
+def astro_trade(dia_act:int, cant_asteroides_comp:int):
+    global cant_dias, p, matriz
+
+    if dia_act >= cant_dias:
+        return 0
+
+    if matriz[dia_act][cant_asteroides_comp] != -inf:
+        return matriz[dia_act][cant_asteroides_comp]    
+
+    nuevo_dia:int = dia_act + 1
+
+    no_hacer_nada:int = astro_trade(nuevo_dia, cant_asteroides_comp)
+    comprar = astro_trade(nuevo_dia, cant_asteroides_comp + 1) - p[dia_act]
+    
+    vender:int = -inf
+    if cant_asteroides_comp > 0:
+        vender = astro_trade(nuevo_dia, cant_asteroides_comp-1) + p[dia_act]
+
+    mejor:int = max(no_hacer_nada, comprar, vender)
+    matriz[dia_act][cant_asteroides_comp] = mejor
+
+    return mejor
+
+def main():
+    tomar_entrada()
+    print(astro_trade(0, 0))
+
+if __name__ == "__main__":
+    main()
+```
+
 ### Paso 5: El Algoritmo — Ahora sí, Bottom-Up
 
 Podríamos hacer Top-Down parchando la recursión con una tabla de $n \times n$. Pero aquí vamos directo a Bottom-Up porque la estructura de dependencias es perfecta para ello y porque nos va a habilitar una optimización de memoria crucial.
