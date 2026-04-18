@@ -447,7 +447,7 @@ Ejemplo: si tenemos monedas de $\{12, 10, 5, 1\}$ centavos y queremos dar $21$ c
 
 Pero para el sistema monetario estándar $\{25, 10, 5, 1\}$ centavos (y sistemas similares), sí funciona. La condición formal es:
 
-**Teorema:** Si existen $m_2, \ldots, m_k \in \mathbb{Z}_{\geq 2}$ tales que $a_i = m_{i+1} \cdot a_{i+1}$ para todo $i$ (es decir, cada denominación es un múltiplo entero de la siguiente), entonces el greedy produce la solución óptima. 
+**Teorema:** Si existen $$m_2, \ldots, m_k \in \mathbb{Z}_{\geq 2}$$ tales que $$a_i = m_{i+1} \cdot a_{i+1}$$ para todo $i$ (es decir, cada denominación es un múltiplo entero de la siguiente), entonces el greedy produce la solución óptima. 
 > A un sistema de este estilo se le suele decir que es un sistema de monedas "canónico".
 
 Desde un punto de vista más simple: si ordenan las monedas por denominación ascendentemente, entonces "cada moneda tiene que valer al menos el doble que la anterior". Un poco más formal sería:
@@ -455,12 +455,12 @@ Desde un punto de vista más simple: si ordenan las monedas por denominación as
 * Sea $n = |M|$.
 * Sea la función:
 
-$
+$$
 esCanónico(m, M) = \begin{cases}
-True & \text{, si } M=\empty \\ 
+True & \text{, si } M=\emptyset \\ 
 False & \text{, si } m > 2*min({M}) \\ 
 esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
-$
+$$
 
 Si $M$ es un sistema de monedas canónico, entonces $esCanónico(min(M), M-\{m\}) = True$
 
@@ -468,7 +468,7 @@ Si $M$ es un sistema de monedas canónico, entonces $esCanónico(min(M), M-\{m\}
 
 $$
 esCanónico(m, M) = \begin{cases}
-m > 2*min({M}) & \text{, si } M=\empty \\ 
+m > 2*min({M}) & \text{, si } M=\emptyset \\ 
 esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
 $$   
 
