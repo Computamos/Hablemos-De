@@ -463,16 +463,6 @@ $$
 
 Si $M$ es un sistema de monedas canónico, entonces $esCanónico(min(M), M-min(M)) = True$
 
-> Notar que se puede reescribir a $esCanónico$ como 
-
-$$
-esCanónico(m, M) = \begin{cases}
-m > 2*min({M}) & \text{, si } |M|=1 \\ 
-esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
-$$   
-
-> Así queda más **_cheta_**.
-
 La moraleja es: **el greedy es contexto-dependiente**. Siempre hay que verificar que funciona para el problema específico.
 
 ---
