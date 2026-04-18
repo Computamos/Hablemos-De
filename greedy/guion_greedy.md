@@ -466,10 +466,11 @@ Si $M$ es un sistema de monedas canónico, entonces $esCanónico(min(M), M-\{m\}
 
 > Notar que se puede reescribir a $esCanónico$ como 
 
-$esCanónico(m, M) = \begin{cases}
+$$
+esCanónico(m, M) = \begin{cases}
 m > 2*min({M}) & \text{, si } M=\empty \\ 
 esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
-$    
+$$   
 
 > Así queda más **_cheta_**.
 
