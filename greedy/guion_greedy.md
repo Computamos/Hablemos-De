@@ -453,20 +453,24 @@ Pero para el sistema monetario estándar $\{25, 10, 5, 1\}$ centavos (y sistemas
 Desde un punto de vista más simple: si ordenan las monedas por denominación ascendentemente, entonces "cada moneda tiene que valer al menos el doble que la anterior". Un poco más formal sería:
 * Sea $M$ el conjunto de monedas.
 * Sea $n = |M|$.
-* Sea la función.
-    $
-    esCanónico(m, M) = \begin{cases}
-    True & \text{, si } M=\empty \\ 
-    False & \text{, si } m > 2*min({M}) \\ 
-    esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
-    $
+* Sea la función:
+
+$
+esCanónico(m, M) = \begin{cases}
+True & \text{, si } M=\empty \\ 
+False & \text{, si } m > 2*min({M}) \\ 
+esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
+$
 
 Si $M$ es un sistema de monedas canónico, entonces $esCanónico(min(M), M-\{m\}) = True$
 
 > Notar que se puede reescribir a $esCanónico$ como 
-> 
-> $esCanónico(m, M) = \begin{cases}m > 2*min({M}) & \text{, si } M=\empty \\ esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}$    
->
+
+$esCanónico(m, M) = \begin{cases}
+m > 2*min({M}) & \text{, si } M=\empty \\ 
+esCanónico(min(M), M - \{m\}) & \text{caso contrario} \\ \end{cases}
+$    
+
 > Así queda más **_cheta_**.
 
 La moraleja es: **el greedy es contexto-dependiente**. Siempre hay que verificar que funciona para el problema específico.
